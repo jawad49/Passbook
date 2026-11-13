@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- a horizontal card; the button turns it 90 degrees when the frame is vertical -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="1.8"
+        android:strokeLineJoin="round"
+        android:pathData="M5,5.5 H19 A3,3 0 0 1 22,8.5 V15.5 A3,3 0 0 1 19,18.5 H5 A3,3 0 0 1 2,15.5 V8.5 A3,3 0 0 1 5,5.5 Z" />
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="1.8"
+        android:pathData="M2,10 H22" />
+</vector>

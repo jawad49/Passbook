@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="20dp"
+    android:height="20dp"
+    android:viewportWidth="20"
+    android:viewportHeight="20">
+    <!-- ring -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M10,10m-8.4,0a8.4,8.4 0,1 1,16.8 0a8.4,8.4 0,1 1,-16.8 0"
+        android:strokeColor="#000000"
+        android:strokeWidth="1.6" />
+    <!-- three dots -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M6,10m-1.3,0a1.3,1.3 0,1 1,2.6 0a1.3,1.3 0,1 1,-2.6 0" />
+    <path
+        android:fillColor="#000000"
+        android:pathData="M10,10m-1.3,0a1.3,1.3 0,1 1,2.6 0a1.3,1.3 0,1 1,-2.6 0" />
+    <path
+        android:fillColor="#000000"
+        android:pathData="M14,10m-1.3,0a1.3,1.3 0,1 1,2.6 0a1.3,1.3 0,1 1,-2.6 0" />
+</vector>

@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- The card stack screen -->
+    <LinearLayout
+        android:id="@+id/stackHost"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        android:orientation="vertical">
+
+        <!-- iOS 18 Wallet style header: big title left, two round buttons right -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="64dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|start"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="8dp"
+                android:text="Passbook"
+                android:textColor="#FFFFFF"
+                android:textSize="32sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/addButton"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:background="@drawable/bg_circle_button"
+                    android:clickable="true"
+                    android:contentDescription="Add card"
+                    android:focusable="true"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_plus"
+                    android:tint="#000000" />
+
+            </LinearLayout>
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clipChildren="false">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:paddingTop="16dp"
+                android:paddingBottom="80dp" />
+
+            <TextView
+                android:id="@+id/emptyText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Tap + to add your first card"
+                android:textColor="#80FFFFFF"
+                android:textSize="16sp"
+                android:visibility="gone" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <!-- The opened card (sits on top of everything) -->
+    <FrameLayout
+        android:id="@+id/overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:clipChildren="false"
+        android:focusable="true"
+        android:visibility="invisible">
+
+        <View
+            android:id="@+id/dim"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0"
+            android:background="#F2000000" />
+
+        <!-- Holds the card and the bar above it; moves and scales as one -->
+        <FrameLayout
+            android:id="@+id/cardHolder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|start"
+            android:clipChildren="false"
+            android:clipToPadding="false">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/flipCard"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom"
+                app:cardBackgroundColor="#000000"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="8dp"
+                app:strokeWidth="0dp">
+
+                <ImageView
+                    android:id="@+id/frontImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="Front of card"
+                    android:scaleType="centerCrop" />
+
+                <FrameLayout
+                    android:id="@+id/backFace"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="invisible">
+
+                    <ImageView
+                        android:id="@+id/backImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:contentDescription="Back of card"
+                        android:scaleType="centerCrop" />
+
+                    <TextView
+                        android:id="@+id/noBackText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:shadowColor="#80000000"
+                        android:shadowDx="0"
+                        android:shadowDy="-1"
+                        android:shadowRadius="1"
+                        android:text="No back side yet\nTap here to add it"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
+                </FrameLayout>
+
+                <!-- The "i" that turns the card around -->
+                <ImageView
+                    android:id="@+id/infoButton"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:layout_gravity="bottom|end"
+                    android:layout_margin="2dp"
+                    android:clickable="true"
+                    android:contentDescription="Flip card"
+                    android:focusable="true"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_info" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- The top part of the card when it shows its back; colours and corners are set in code -->
+            <LinearLayout
+                android:id="@+id/backBar"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="top"
+                android:alpha="0"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp">
+
+                <ImageView
+                    android:id="@+id/trashButton"
+                    android:layout_width="44dp"
+                    android:layout_height="28dp"
+                    android:clickable="true"
+                    android:contentDescription="Delete card"
+                    android:focusable="true"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_trash" />
+
+                <TextView
+                    android:id="@+id/barTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:shadowColor="#80000000"
+                    android:shadowDx="0"
+                    android:shadowDy="-1"
+                    android:shadowRadius="1"
+                    android:text="Back side"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/doneButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="28dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:minWidth="60dp"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:shadowColor="#80000000"
+                    android:shadowDx="0"
+                    android:shadowDy="-1"
+                    android:shadowRadius="1"
+                    android:text="Done"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <!-- The delete sheet: it is also the shredder the strips fall into -->
+        <LinearLayout
+            android:id="@+id/sheet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="vertical"
+            android:visibility="invisible">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/sheetContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingStart="20dp"
+                    android:paddingTop="22dp"
+                    android:paddingEnd="20dp"
+                    android:paddingBottom="20dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:shadowColor="#CCFFFFFF"
+                        android:shadowDx="0"
+                        android:shadowDy="1"
+                        android:shadowRadius="1"
+                        android:text="Are you sure you want to delete this card?"
+                        android:textColor="#3A3A40"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/sheetDelete"
+                        android:layout_width="match_parent"
+                        android:layout_height="46dp"
+                        android:layout_marginTop="18dp"
+                        android:background="@drawable/bg_button_red"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:shadowColor="#80000000"
+                        android:shadowDx="0"
+                        android:shadowDy="-1"
+                        android:shadowRadius="1"
+                        android:text="Delete"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/sheetCancel"
+                        android:layout_width="match_parent"
+                        android:layout_height="46dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/bg_sheet_cancel"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:text="Cancel"
+                        android:textColor="#3A3A40"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/sheetTrash"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_gravity="center"
+                    android:alpha="0"
+                    android:contentDescription="Shredder"
+                    android:src="@drawable/ic_trash"
+                    android:tint="#8E8E93" />
+            </FrameLayout>
+
+            <com.vault.passbook.TeethView
+                android:id="@+id/teeth"
+                android:layout_width="match_parent"
+                android:layout_height="22dp" />
+        </LinearLayout>
+    </FrameLayout>
+
+</FrameLayout>

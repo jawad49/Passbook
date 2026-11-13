@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- the three tickets, fanned out; scaled down to stay inside the safe zone -->
+    <group android:scaleX="0.76" android:scaleY="0.76" android:pivotX="54" android:pivotY="58">
+        <group android:rotation="-20" android:pivotX="54" android:pivotY="100">
+            <path android:fillColor="#5BB04A" android:pathData="M44.0,20 H50.4 A3.6,3.6 0 0 0 57.6,20 H64.0 Q68.0,20 68.0,24 V110 H40.0 V24 Q40.0,20 44.0,20 Z" />
+            <group android:translateX="54" android:translateY="37">
+                <path android:fillColor="#2E6E24" android:pathData="M-4.2,-6.5 H4.2 V-2.5 C4.2,0.8 2.2,2.4 0.9,2.9 V5 H3.2 V7 H-3.2 V5 H-0.9 V2.9 C-2.2,2.4 -4.2,0.8 -4.2,-2.5 Z" />
+                <path android:fillColor="#00000000" android:strokeColor="#2E6E24" android:strokeWidth="1.2" android:pathData="M-4.2,-5 H-6.6 V-3 C-6.6,-1 -5.6,0 -4.1,0.3 M4.2,-5 H6.6 V-3 C6.6,-1 5.6,0 4.1,0.3" />
+            </group>
+        </group>
+        <group android:rotation="-6" android:pivotX="54" android:pivotY="100">
+            <path android:fillColor="#F3D13F" android:pathData="M44.0,20 H50.4 A3.6,3.6 0 0 0 57.6,20 H64.0 Q68.0,20 68.0,24 V110 H40.0 V24 Q40.0,20 44.0,20 Z" />
+            <group android:translateX="54" android:translateY="37">
+                <path android:fillColor="#A98313" android:pathData="M0,-8 C1.2,-8 1.6,-6.8 1.6,-5.5 L1.6,-2.5 L8,1.5 L8,3 L1.6,1 L1.6,4.8 L3.8,6.4 L3.8,7.6 L0,6.6 L-3.8,7.6 L-3.8,6.4 L-1.6,4.8 L-1.6,1 L-8,3 L-8,1.5 L-1.6,-2.5 L-1.6,-5.5 C-1.6,-6.8 -1.2,-8 0,-8 Z" />
+            </group>
+        </group>
+        <group android:rotation="9" android:pivotX="54" android:pivotY="100">
+            <path android:fillColor="#3F9BE6" android:pathData="M44.0,20 H50.4 A3.6,3.6 0 0 0 57.6,20 H64.0 Q68.0,20 68.0,24 V110 H40.0 V24 Q40.0,20 44.0,20 Z" />
+            <group android:translateX="54" android:translateY="37">
+                <path android:fillColor="#154F8C" android:pathData="M-4.9,-4.6 a2.3,2.3 0 1,0 4.6,0 a2.3,2.3 0 1,0 -4.6,0 Z M-0.6999999999999997,-4.6 a2.3,2.3 0 1,0 4.6,0 a2.3,2.3 0 1,0 -4.6,0 Z M-5.8,-2.2 H3.6 Q4.6,-2.2 4.6,-1.2 V1 L8,-1.4 V4.6 L4.6,2.2 V4 Q4.6,5 3.6,5 H-5.8 Q-6.8,5 -6.8,4 V-1.2 Q-6.8,-2.2 -5.8,-2.2 Z" />
+            </group>
+        </group>
+    </group>
+
+    <!-- the leather pocket, full width -->
+    <path android:fillColor="#00000000" android:strokeColor="#66000000" android:strokeWidth="5" android:pathData="M-2,84 Q54,70 110,52" />
+    <path android:pathData="M-2,84 Q54,70 110,52 L110,110 L-2,110 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:startX="54" android:startY="52" android:endX="54" android:endY="108" android:type="linear">
+                <item android:color="#FF3E3E41" android:offset="0" />
+                <item android:color="#FF19191B" android:offset="1" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path android:fillColor="#00000000" android:strokeColor="#55FFFFFF" android:strokeWidth="0.8" android:pathData="M-2,84 Q54,70 110,52" />
+    <path android:fillColor="#00000000" android:strokeColor="#22FFFFFF" android:strokeWidth="0.7" android:pathData="M-2,89 Q54,75 110,57" />
+</vector>

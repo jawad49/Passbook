@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="28dp"
+    android:height="28dp"
+    android:viewportWidth="28"
+    android:viewportHeight="28">
+
+    <!-- the button: a shallow dish pressed into the card, dark at the top, a little light at the bottom -->
+    <path android:pathData="M14,14m-13,0a13,13 0,1 1,26 0a13,13 0,1 1,-26 0">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="14" android:startY="1"
+                android:endX="14" android:endY="27"
+                android:type="linear">
+                <item android:color="#4D000000" android:offset="0" />
+                <item android:color="#26000000" android:offset="0.55" />
+                <item android:color="#1AFFFFFF" android:offset="1" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- the rim: a dark inner shadow along the top edge, a light edge along the bottom -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeWidth="1.2"
+        android:pathData="M14,14m-12.4,0a12.4,12.4 0,1 1,24.8 0a12.4,12.4 0,1 1,-24.8 0">
+        <aapt:attr name="android:strokeColor">
+            <gradient
+                android:startX="14" android:startY="1.6"
+                android:endX="14" android:endY="26.4"
+                android:type="linear">
+                <item android:color="#70000000" android:offset="0" />
+                <item android:color="#00000000" android:offset="0.5" />
+                <item android:color="#80FFFFFF" android:offset="1" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- the "i", pressed into the button: light edge below, dark edge above -->
+    <path
+        android:fillColor="#55FFFFFF"
+        android:pathData="M14,9.1m-1.7,0a1.7,1.7 0,1 1,3.4 0a1.7,1.7 0,1 1,-3.4 0" />
+    <path
+        android:fillColor="#55FFFFFF"
+        android:pathData="M12.6,12.5h2.8v8.6h-2.8z" />
+    <path
+        android:fillColor="#59000000"
+        android:pathData="M14,7.5m-1.7,0a1.7,1.7 0,1 1,3.4 0a1.7,1.7 0,1 1,-3.4 0" />
+    <path
+        android:fillColor="#59000000"
+        android:pathData="M12.6,10.9h2.8v8.6h-2.8z" />
+    <path
+        android:fillColor="#E6F2F2F2"
+        android:pathData="M14,8.2m-1.7,0a1.7,1.7 0,1 1,3.4 0a1.7,1.7 0,1 1,-3.4 0" />
+    <path
+        android:fillColor="#E6F2F2F2"
+        android:pathData="M12.6,11.6h2.8v8.6h-2.8z" />
+</vector>
